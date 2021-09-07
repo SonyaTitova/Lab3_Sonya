@@ -2,19 +2,25 @@
 #define STRAT_GROUPFILES_H
 
 #include <QString>
+#include <QDebug>
+#include <QHash>
 
-class StratGroupFiles
+class Strat_GroupFiles
 {
     public:
 
-        StratGroupFiles(QString path);
-        virtual ~StratGroupFiles();
+        Strat_GroupFiles(QString path_);
+        virtual ~Strat_GroupFiles();
 
         void setPath(QString path_);
 
+        virtual void groupFiles() = 0;
+
     protected:
 
-        QString path;
+        QString path; // путь к дирректории
+        int weight; // размер выбранного пути
+        QHash<QString, int> group; // группировка в удобный контейнер
 };
 
 #endif // STRAT_GROUPFILES_H

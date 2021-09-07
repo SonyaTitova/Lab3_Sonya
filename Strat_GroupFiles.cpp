@@ -1,15 +1,15 @@
 #include "Strat_GroupFiles.h"
 
 
-StratGroupFiles::StratGroupFiles(QString path){
-
+Strat_GroupFiles::Strat_GroupFiles(QString path_){
+    path = path_;
 }
 
-StratGroupFiles::~StratGroupFiles()
+Strat_GroupFiles::~Strat_GroupFiles()
 {
 
 }
 
-void StratGroupFiles::setPath(QString path_){
+void Strat_GroupFiles::setPath(QString path_){
     path = path_;
 }
