@@ -1,8 +1,6 @@
 #ifndef TYPES_GROUPFILES_H
 #define TYPES_GROUPFILES_H
 
-#include <iostream>
-
 #include <QString>
 #include <QDir>
 #include <QMap>
