@@ -9,10 +9,16 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Folders_GroupFiles.cpp \
+    Strat_GroupFiles.cpp \
+    Types_GroupFiles.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
+    Folders_GroupFiles.h \
+    Strat_GroupFiles.h \
+    Types_GroupFiles.h \
     mainwindow.h
 
 FORMS += \
