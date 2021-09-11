@@ -18,11 +18,10 @@ int main(int argc, char *argv[])
 
     delete typeGroup;
     delete folderGroup;
-    return 5;
-    /*
+
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
     return a.exec();
-    */
+
 }
