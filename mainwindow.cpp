@@ -8,13 +8,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->setupUi(this);
 
-    QFileSystemModel *model = new QFileSystemModel; // Создадим модель обзора файловой системы
+    QFileSystemModel *fileSystem = new QFileSystemModel; // Создадим модель обзора файловой системы
+    fileSystem->setFilter(QDir::NoDotAndDotDot | QDir::QDir::AllEntries); // установим фильтры на эту модель
+    fileSystem->setRootPath(""); // установим начальный путь, он же самый верхний
 
-    model->setFilter(QDir::NoDotAndDotDot | QDir::QDir::AllEntries); // установим фильтры на эту модель
-    model->setRootPath(""); // установим начальный путь, он же самый верхний
+    QAbstractTableModel *tableModel = new TableModel_GroupFiles; // инициализоровали модель для правой таблицы
 
-    ui->treeView_SystemFiles->setModel(model); // установим в представление модель обзора файловой системы
-
+    ui->treeView_SystemFiles->setModel(fileSystem); // установим в представление модель обзора файловой системы
+    ui->tableView_GroupFiles->setModel(tableModel); // установим в представление модель группировки файлов
 }
 
 MainWindow::~MainWindow()

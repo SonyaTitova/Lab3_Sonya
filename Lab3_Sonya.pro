@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     Folders_GroupFiles.cpp \
     Strat_GroupFiles.cpp \
+    TableModel_GroupFiles.cpp \
     Types_GroupFiles.cpp \
     main.cpp \
     mainwindow.cpp
@@ -18,6 +19,7 @@ SOURCES += \
 HEADERS += \
     Folders_GroupFiles.h \
     Strat_GroupFiles.h \
+    TableModel_GroupFiles.h \
     Types_GroupFiles.h \
     mainwindow.h
 
