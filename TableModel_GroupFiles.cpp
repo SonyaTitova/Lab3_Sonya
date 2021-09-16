@@ -6,20 +6,64 @@ TableModel_GroupFiles::TableModel_GroupFiles(QObject *parent) : QAbstractTableMo
 }
 
 int TableModel_GroupFiles::rowCount(const QModelIndex &parent) const{ // отвечает за количество строк
-    return 10;
+    int i = listForTable.length();
+    return i;
 }
 
 int TableModel_GroupFiles::columnCount(const QModelIndex &parent) const { // отвечает за количество столбцов
-    return 3;
+    int i = 0;
+    if(listForTable.empty()){}
+    else i = listForTable.at(0).length();
+    return i;
 }
 
+// формирует заголовки
+QVariant TableModel_GroupFiles::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if (role != Qt::DisplayRole)
+        return QVariant();
+
+    if (orientation == Qt::Horizontal) {
+        switch (section) {
+            case 0:
+                return tr("Имя");
+
+            case 1:
+                return tr("Размер");
+
+            case 2:
+                return tr("Процент");
+
+            default:
+                return QVariant();
+        }
+    }
+    return QVariant();
+}
+
+
 QVariant TableModel_GroupFiles::data(const QModelIndex &index, int role) const { // отвечает за данные в таблице
-    // ради проверки работы вот такой вот простенький алгоритм заполнения с сайта Qt
 
     if (role == Qt::DisplayRole)
-       return QString("Row%1, Column%2")
-                   .arg(index.row() + 1)
-                   .arg(index.column() +1);
+
+       return QString(listForTable[index.row()][index.column()]);
 
     return QVariant();
 }
+
+
+// вызывается в других местах программы, чтобы сменить путь
+void TableModel_GroupFiles::setPath(QString path){
+
+    beginResetModel();
+
+    Strat_GroupFiles *someStrat = new Types_GroupFiles(path);
+    helper_Strat helper(someStrat);
+
+    listForTable = helper.getComfyMapping();
+
+    delete someStrat;
+
+    endResetModel();
+}
+

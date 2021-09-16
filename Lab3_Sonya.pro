@@ -13,6 +13,7 @@ SOURCES += \
     Strat_GroupFiles.cpp \
     TableModel_GroupFiles.cpp \
     Types_GroupFiles.cpp \
+    helper_Strat.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -21,6 +22,7 @@ HEADERS += \
     Strat_GroupFiles.h \
     TableModel_GroupFiles.h \
     Types_GroupFiles.h \
+    helper_Strat.h \
     mainwindow.h
 
 FORMS += \

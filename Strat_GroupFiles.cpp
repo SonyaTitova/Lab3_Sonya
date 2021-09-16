@@ -13,3 +13,11 @@ Strat_GroupFiles::~Strat_GroupFiles()
 void Strat_GroupFiles::setPath(QString path_){
     path = path_;
 }
+
+int Strat_GroupFiles::getWeight(){
+    return weight;
+}
+
+QHash<QString, int> Strat_GroupFiles::getGroup(){
+    return group;
+}

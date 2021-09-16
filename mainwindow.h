@@ -19,7 +19,17 @@ class MainWindow : public QMainWindow
         MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
 
+
+    private slots:
+        // слот реагирующий на выбор дирректории
+        void on_treeView_SystemFiles_doubleClicked(const QModelIndex &index);
+
     private:
         Ui::MainWindow *ui;
+
+        QFileSystemModel *fileSystem; // Указатель на модель обзора файловой системы
+        TableModel_GroupFiles *tableModel; // Указатель на модель для правой таблицы
+
+
 };
 #endif // MAINWINDOW_H

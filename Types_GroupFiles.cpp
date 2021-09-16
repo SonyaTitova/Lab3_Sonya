@@ -14,10 +14,18 @@ void Types_GroupFiles::groupFiles(){
 
     static int sum = 0; // накапливает размер
     static QString currentPath = path; // содержит актуальный путь
-    QFileInfo fileInfo(currentPath); // получает информацию о файле через путь
+    QFileInfo fileInfo = currentPath; // получает информацию о файле через путь
     static QDir dir = fileInfo.dir(); // актуальная папка
     static int level = 0; // слежение за уровнем углубления в файловую систему
     static int oldSize = 0; // нужен чтобы считать размер верхнего уровня
+
+    if(level == 0){
+         sum = 0; // накапливает размер
+         currentPath = path; // содержит актуальный путь
+         fileInfo = currentPath; // получает информацию о файле через путь
+         dir = fileInfo.dir(); // актуальная папка
+         oldSize = 0; // нужен чтобы считать размер верхнего уровня
+    }
 
     /*
     Рассмотрим способы обхода содержимого папок на диске.
