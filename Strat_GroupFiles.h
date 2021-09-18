@@ -14,6 +14,7 @@ class Strat_GroupFiles
 
         void setPath(QString path_);
 
+        QString getPath();
         int getWeight();
         QHash<QString, int> getGroup();
 

@@ -24,7 +24,9 @@ class MainWindow : public QMainWindow
         // слот реагирующий на выбор дирректории
         void on_treeView_SystemFiles_doubleClicked(const QModelIndex &index);
 
-    private:
+        void on_comboBox_currentIndexChanged(int index);
+
+private:
         Ui::MainWindow *ui;
 
         QFileSystemModel *fileSystem; // Указатель на модель обзора файловой системы

@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete fileSystem;
+    delete tableModel;
 }
 
 
@@ -37,4 +39,7 @@ void MainWindow::on_treeView_SystemFiles_doubleClicked(const QModelIndex &index)
 }
 
 
-
+void MainWindow::on_comboBox_currentIndexChanged(int index)
+{
+    tableModel->setGroupingStrat(index);
+}

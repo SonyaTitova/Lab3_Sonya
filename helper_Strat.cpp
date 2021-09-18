@@ -2,7 +2,11 @@
 
 helper_Strat::helper_Strat(Strat_GroupFiles *strat)
 {
-    someStrat = strat;
+    someStrat = strat;  // устанавливаем стратегию при инициализации
+}
+
+helper_Strat::~helper_Strat(){
+
 }
 
 QVector<QStringList> helper_Strat::getComfyMapping(){ // выдает данные в удобном формате и высчитывает процент размера от общего

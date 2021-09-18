@@ -14,6 +14,10 @@ void Strat_GroupFiles::setPath(QString path_){
     path = path_;
 }
 
+QString Strat_GroupFiles::getPath(){
+    return path;
+}
+
 int Strat_GroupFiles::getWeight(){
     return weight;
 }

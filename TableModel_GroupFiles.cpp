@@ -2,7 +2,14 @@
 
 TableModel_GroupFiles::TableModel_GroupFiles(QObject *parent) : QAbstractTableModel(parent)
 {
+    someStrat = nullptr;
+    setGroupingStrat(0);
+}
 
+TableModel_GroupFiles::~TableModel_GroupFiles(){
+    if(someStrat != nullptr){
+        delete someStrat;
+    }
 }
 
 int TableModel_GroupFiles::rowCount(const QModelIndex &parent) const{ // отвечает за количество строк
@@ -57,13 +64,38 @@ void TableModel_GroupFiles::setPath(QString path){
 
     beginResetModel();
 
-    Strat_GroupFiles *someStrat = new Types_GroupFiles(path);
+    someStrat->setPath(path);
     helper_Strat helper(someStrat);
 
     listForTable = helper.getComfyMapping();
 
-    delete someStrat;
-
     endResetModel();
 }
 
+// вызывается в других местах программы, чтобы сменить стратегию группировки
+void TableModel_GroupFiles::setGroupingStrat(int strat){
+
+    QString path; // будет содержать актуальный путь при смене стратегии группировки
+
+    beginResetModel();
+
+    if(someStrat != nullptr) {
+        path = someStrat->getPath(); // сохраняем путь перед удалением старой стратегии
+        delete someStrat;
+    }
+
+    switch (strat) { // переключатель стратегий
+        case Folders_Group:
+            someStrat = new Folders_GroupFiles(path);
+            break;
+        case Types_Group:
+            someStrat = new Types_GroupFiles(path);
+            break;
+    }
+
+    helper_Strat helper(someStrat); // посылаем стратегию в класс-помощник
+
+    listForTable = helper.getComfyMapping(); // получаем удобную для вставки в таблицу структуру данных
+
+    endResetModel();
+}

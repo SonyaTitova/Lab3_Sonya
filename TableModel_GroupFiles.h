@@ -7,11 +7,20 @@
 #include "Folders_GroupFiles.h"
 #include "Types_GroupFiles.h"
 
+
 class TableModel_GroupFiles : public QAbstractTableModel
 {
+
+    enum GroupingStrategy{ // перечисление стратегий
+        Folders_Group,
+        Types_Group
+    };
+
     public:
 
         TableModel_GroupFiles(QObject *parent = nullptr);
+        ~TableModel_GroupFiles();
+
         int rowCount(const QModelIndex &parent = QModelIndex()) const override; // отвечает за количество строк
         int columnCount(const QModelIndex &parent = QModelIndex()) const override; // отвечает за количество столбцов
         QVariant headerData(int section, Qt::Orientation orientation, int role) const; // Формирует заголовки
@@ -19,10 +28,12 @@ class TableModel_GroupFiles : public QAbstractTableModel
 
 
         void setPath(QString path); // вызывается в других местах программы, чтобы сменить путь
+        void setGroupingStrat(int strat); // вызывается в других местах программы, чтобы сменить стратегию группировки
 
     private:
 
         QVector<QStringList> listForTable; // удобный формат для того чтобы выводить в таблицу
+        Strat_GroupFiles *someStrat; // указатель на актуальную стратегию
 };
 
 #endif // TABLEMODEL_GROUPFILES_H

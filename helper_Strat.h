@@ -11,12 +11,13 @@ class helper_Strat // класс помогающий адаптировать �
     public:
 
         helper_Strat(Strat_GroupFiles *strat);
+        ~helper_Strat();
 
         QVector<QStringList> getComfyMapping(); // выдает данные в удобном формате и высчитывает процент размера от общего
 
     private:
 
-        Strat_GroupFiles *someStrat;
+        Strat_GroupFiles *someStrat; // указатель на стратегию
 
 };
 
