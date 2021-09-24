@@ -2,6 +2,10 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileSystemModel>
+#include <QAbstractTableModel>
+#include "TableModel_GroupFiles.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +19,19 @@ class MainWindow : public QMainWindow
         MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
 
-    private:
+
+    private slots:
+        // слот реагирующий на выбор дирректории
+        void on_treeView_SystemFiles_doubleClicked(const QModelIndex &index);
+
+        void on_comboBox_currentIndexChanged(int index);
+
+private:
         Ui::MainWindow *ui;
+
+        QFileSystemModel *fileSystem; // Указатель на модель обзора файловой системы
+        TableModel_GroupFiles *tableModel; // Указатель на модель для правой таблицы
+
+
 };
 #endif // MAINWINDOW_H

@@ -2,7 +2,10 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+CONFIG += release
+CONFIG += debug
 CONFIG += c++11
+
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -11,14 +14,18 @@ CONFIG += c++11
 SOURCES += \
     Folders_GroupFiles.cpp \
     Strat_GroupFiles.cpp \
+    TableModel_GroupFiles.cpp \
     Types_GroupFiles.cpp \
+    helper_Strat.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     Folders_GroupFiles.h \
     Strat_GroupFiles.h \
+    TableModel_GroupFiles.h \
     Types_GroupFiles.h \
+    helper_Strat.h \
     mainwindow.h
 
 FORMS += \
