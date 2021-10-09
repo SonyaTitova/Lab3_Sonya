@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include "BarChart.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -19,6 +19,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->treeView_SystemFiles->setModel(fileSystem); // установим в представление модель обзора файловой системы
     ui->tableView_GroupFiles->setModel(tableModel); // установим в представление модель группировки файлов
 
+    diagrams = new QChartView();
+
+    ds = new BarChart();
+    ds->set();
+
+    QChart *ch = ds->getChart();
+
+    diagrams->setChart(ch);
+
+    ui->splitter->addWidget(diagrams);
 }
 
 MainWindow::~MainWindow()
@@ -26,6 +36,8 @@ MainWindow::~MainWindow()
     delete ui;
     delete fileSystem;
     delete tableModel;
+    delete diagrams;
+    delete ds;
 }
 
 
