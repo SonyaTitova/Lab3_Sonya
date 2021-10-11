@@ -48,8 +48,8 @@ QVariant TableModel_GroupFiles::headerData(int section, Qt::Orientation orientat
     return QVariant();
 }
 
-
-QVariant TableModel_GroupFiles::data(const QModelIndex &index, int role) const { // отвечает за данные в таблице
+// отвечает за данные в таблице
+QVariant TableModel_GroupFiles::data(const QModelIndex &index, int role) const {
 
     if (role == Qt::DisplayRole)
 

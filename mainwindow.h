@@ -8,6 +8,7 @@
 #include "TableModel_GroupFiles.h"
 #include "SampleChart.h"
 #include "BarChart.h"
+#include "PieChart.h"
 #include "ISubject_Models.h"
 #include "IObserver_Charts.h"
 
@@ -24,6 +25,11 @@ class MainWindow : public QMainWindow {
 
     public:
 
+        enum SampleCharts{ // перечисление стратегий
+            BarChart_,
+            PieChart_
+        };
+
         MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
 
@@ -32,7 +38,9 @@ class MainWindow : public QMainWindow {
         // слот реагирующий на выбор дирректории
         void on_treeView_SystemFiles_doubleClicked(const QModelIndex &index);
 
-        void on_comboBox_currentIndexChanged(int index);
+        void on_comboBox_GroupStrat_currentIndexChanged(int index);
+
+        void on_comboBox_Diagram_currentIndexChanged(int index);
 
     private:
 
@@ -43,6 +51,8 @@ class MainWindow : public QMainWindow {
         QChartView *diagrams; // представление диаграммы
         QChart chart; // диаграмма
         SampleChart *someChart; // какая-то диаграмма из шаблона
+        SampleChart *barChart; // диаграмма столбик
+        SampleChart *pieChart; // круговая диаграмма
         IObserver_Charts *observerChart; // объект наблюдателя
         ISubject_Models *subjectModel; // объект субъекта для наблюдателя
 

@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="comboBox_GroupStrat">
       <item>
        <property name="text">
         <string>Группировка по файлам и папкам</string>
@@ -30,11 +30,25 @@
      </widget>
     </item>
     <item>
+     <widget class="QComboBox" name="comboBox_Diagram">
+      <item>
+       <property name="text">
+        <string>Столбчатая диаграмма</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Круговая диаграмма</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QWidget" name="">
+      <widget class="QWidget" name="layoutWidget">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
          <widget class="QTreeView" name="treeView_SystemFiles"/>

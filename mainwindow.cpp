@@ -21,11 +21,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     diagrams = new QChartView(); // создаем представление диаграммы, в которую поместим модель
 
-    someChart = new BarChart(); // создаем модель столбцов
+    barChart = new BarChart();
+    pieChart = new PieChart();
 
-    observerChart = someChart; // присваеваем наблюдателю указатель на нашу модель
+    someChart = barChart;
 
-    subjectModel->Attach(observerChart); // добавляем наблюдателя к субъекту
+    IObserver_Charts *observerBarChart = barChart;
+    IObserver_Charts *observerPieChart = pieChart;
+
+    subjectModel->Attach(observerBarChart); // добавляем наблюдателя BarChart к субъекту
+    subjectModel->Attach(observerPieChart); // добавляем наблюдателя PieChart к субъекту
 
     ui->splitter->addWidget(diagrams); // добавляем диаграмму в UI
 }
@@ -33,13 +38,10 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete fileSystem; // Указатель на модель обзора файловой системы
-    delete tableModel; // Указатель на модель для правой таблицы
+    delete fileSystem;
+    delete tableModel;
     delete diagrams;
-    delete someChart;
     delete observerChart;
-    delete subjectModel;
-
 }
 
 
@@ -52,14 +54,28 @@ void MainWindow::on_treeView_SystemFiles_doubleClicked(const QModelIndex &index)
     tableModel->setPath(s); // посылаем путь в экземпляр класса TableModel_GroupFiles
 
     subjectModel->Notify(); // при выборе директории уведомляем все модели диаграмм
-    diagrams->setChart(someChart->getChart()); // установить обновленную модель в
+    diagrams->setChart(someChart->getChart()); // установить обновленную модель в представление
 }
 
 
-void MainWindow::on_comboBox_currentIndexChanged(int index)
+void MainWindow::on_comboBox_GroupStrat_currentIndexChanged(int index)
 {
     tableModel->setGroupingStrat(index);
 
     subjectModel->Notify(); // при выборе директории уведомляем все модели диаграмм
-    diagrams->setChart(someChart->getChart()); // установить обновленную модель в
+    diagrams->setChart(someChart->getChart()); // установить обновленную модель в представление
+}
+
+void MainWindow::on_comboBox_Diagram_currentIndexChanged(int index)
+{
+    switch (index) { // переключатель стратегий
+        case BarChart_:
+            someChart = barChart;
+            break;
+        case PieChart_:
+            someChart = pieChart;
+            break;
+    }
+    subjectModel->Notify(); // при выборе директории уведомляем все модели диаграмм
+    diagrams->setChart(someChart->getChart()); // установить обновленную модель в представление
 }

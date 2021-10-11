@@ -16,6 +16,7 @@ SOURCES += \
     Folders_GroupFiles.cpp \
     IObserver_Charts.cpp \
     ISubject_Models.cpp \
+    PieChart.cpp \
     SampleChart.cpp \
     Strat_GroupFiles.cpp \
     TableModel_GroupFiles.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     Folders_GroupFiles.h \
     IObserver_Charts.h \
     ISubject_Models.h \
+    PieChart.h \
     SampleChart.h \
     Strat_GroupFiles.h \
     TableModel_GroupFiles.h \

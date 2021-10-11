@@ -14,7 +14,7 @@
 
 using namespace QtCharts;
 
-class BarChart : public SampleChart{ //класс столбчатой диаграммы
+class BarChart : public SampleChart{ //класс столбчатой диаграммы, реализует шаблон SampleChart
 
     public:
 
