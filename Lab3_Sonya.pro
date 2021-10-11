@@ -14,6 +14,8 @@ QT += charts
 SOURCES += \
     BarChart.cpp \
     Folders_GroupFiles.cpp \
+    IObserver_Charts.cpp \
+    ISubject_Models.cpp \
     SampleChart.cpp \
     Strat_GroupFiles.cpp \
     TableModel_GroupFiles.cpp \
@@ -25,6 +27,8 @@ SOURCES += \
 HEADERS += \
     BarChart.h \
     Folders_GroupFiles.h \
+    IObserver_Charts.h \
+    ISubject_Models.h \
     SampleChart.h \
     Strat_GroupFiles.h \
     TableModel_GroupFiles.h \

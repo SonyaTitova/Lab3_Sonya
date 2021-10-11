@@ -5,8 +5,8 @@
 #include <QDebug>
 #include <QHash>
 
-class Strat_GroupFiles
-{
+class Strat_GroupFiles {
+
     public:
 
         Strat_GroupFiles(QString path_);

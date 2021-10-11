@@ -99,3 +99,9 @@ void TableModel_GroupFiles::setGroupingStrat(int strat){
 
     endResetModel();
 }
+
+void TableModel_GroupFiles::Notify(){
+    for (QList<IObserver_Charts *>::iterator i = listOfCharts.begin(); i != listOfCharts.end(); i++){
+        (*i)->UpdateChart(listForTable); // вызывает у всех наблюдателей метод обновления
+    }
+}

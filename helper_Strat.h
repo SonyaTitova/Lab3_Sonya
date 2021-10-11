@@ -8,6 +8,7 @@
 
 class helper_Strat // класс помогающий адаптировать начальные данные Strat_GroupFiles к модели
 {
+
     public:
 
         helper_Strat(Strat_GroupFiles *strat);

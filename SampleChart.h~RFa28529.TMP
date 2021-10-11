@@ -1,0 +1,26 @@
+#ifndef SAMPLECHART_H
+#define SAMPLECHART_H
+
+#include <QChart>
+#include <QHash>
+#include <QString>
+
+using namespace QtCharts;
+
+class SampleChart {
+
+    public:
+
+        SampleChart();
+        virtual ~SampleChart();
+
+        QChart* getChart(QHash<QString, int> group);
+
+        virtual QChart* createChart(QHash<QString, int> group) = 0;
+
+    protected:
+
+        QChart *qChart;
+};
+
+#endif // SAMPLECHART_H

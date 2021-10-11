@@ -10,8 +10,8 @@
 
 #include "Strat_GroupFiles.h"
 
-class Folders_GroupFiles : public Strat_GroupFiles
-{
+class Folders_GroupFiles : public Strat_GroupFiles{
+
     public:
 
         Folders_GroupFiles(QString path);

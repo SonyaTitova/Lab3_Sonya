@@ -6,43 +6,23 @@
 #include <QBarSet>
 #include <QBarCategoryAxis>
 #include <QStringList>
+#include <QString>
+#include <QRegExp>
 
+
+#include "SampleChart.h"
 
 using namespace QtCharts;
 
-class BarChart
-{
+class BarChart : public SampleChart{ //класс столбчатой диаграммы
+
     public:
 
         BarChart();
+        virtual ~BarChart();
 
-        QChart *qchart;
-        QChartView *qcharview;
-
-        QChart* getChart(){
-            return qchart;
-        }
-
-        void set(){
-            QStringList categories;
-            QStackedBarSeries *series = new QStackedBarSeries(qchart);
-            QBarSet *set = new QBarSet("Bar set " + QString::number(11));
-            qreal f1 = 13;
-            qreal f2 = 100;
-            *set << f1;
-            *set << f2;
-
-            series->append(set);
-
-            categories << "df" << "fdgg";
-            qchart->addSeries(series);
-
-            QBarCategoryAxis *axis = new QBarCategoryAxis();
-            axis->append(categories);
-            qchart->createDefaultAxes();
-            qchart->setAxisX(axis, series);
-
-        }
+        // реализация чисто виртуальной функции класса шаблон для создания диаграммы
+        QChart* createChart() override;
 };
 
 #endif // BARCHART_H
