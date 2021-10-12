@@ -1,4 +1,4 @@
-QT       += core gui
+QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -6,13 +6,18 @@ CONFIG += release
 CONFIG += debug
 CONFIG += c++11
 
-
+QT += charts
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    BarChart.cpp \
     Folders_GroupFiles.cpp \
+    IObserver_Charts.cpp \
+    ISubject_Models.cpp \
+    PieChart.cpp \
+    SampleChart.cpp \
     Strat_GroupFiles.cpp \
     TableModel_GroupFiles.cpp \
     Types_GroupFiles.cpp \
@@ -21,7 +26,12 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    BarChart.h \
     Folders_GroupFiles.h \
+    IObserver_Charts.h \
+    ISubject_Models.h \
+    PieChart.h \
+    SampleChart.h \
     Strat_GroupFiles.h \
     TableModel_GroupFiles.h \
     Types_GroupFiles.h \

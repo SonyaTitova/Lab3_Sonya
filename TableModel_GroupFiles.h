@@ -6,9 +6,10 @@
 #include "helper_Strat.h"
 #include "Folders_GroupFiles.h"
 #include "Types_GroupFiles.h"
+#include "ISubject_Models.h"
 
-
-class TableModel_GroupFiles : public QAbstractTableModel
+// модель таблицы является объектом за которым наблюдают диаграммы
+class TableModel_GroupFiles : public ISubject_Models, public QAbstractTableModel
 {
 
     enum GroupingStrategy{ // перечисление стратегий
@@ -29,6 +30,8 @@ class TableModel_GroupFiles : public QAbstractTableModel
 
         void setPath(QString path); // вызывается в других местах программы, чтобы сменить путь
         void setGroupingStrat(int strat); // вызывается в других местах программы, чтобы сменить стратегию группировки
+
+        virtual void Notify() override; // реализация метода уведомления для наблюдателей
 
     private:
 

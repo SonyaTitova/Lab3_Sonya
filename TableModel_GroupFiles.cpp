@@ -48,8 +48,8 @@ QVariant TableModel_GroupFiles::headerData(int section, Qt::Orientation orientat
     return QVariant();
 }
 
-
-QVariant TableModel_GroupFiles::data(const QModelIndex &index, int role) const { // отвечает за данные в таблице
+// отвечает за данные в таблице
+QVariant TableModel_GroupFiles::data(const QModelIndex &index, int role) const {
 
     if (role == Qt::DisplayRole)
 
@@ -98,4 +98,10 @@ void TableModel_GroupFiles::setGroupingStrat(int strat){
     listForTable = helper.getComfyMapping(); // получаем удобную для вставки в таблицу структуру данных
 
     endResetModel();
+}
+
+void TableModel_GroupFiles::Notify(){
+    for (QList<IObserver_Charts *>::iterator i = listOfCharts.begin(); i != listOfCharts.end(); i++){
+        (*i)->UpdateChart(listForTable); // вызывает у всех наблюдателей метод обновления
+    }
 }

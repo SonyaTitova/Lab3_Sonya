@@ -4,34 +4,57 @@
 #include <QMainWindow>
 #include <QFileSystemModel>
 #include <QAbstractTableModel>
+#include <QtCharts/QChartView>
 #include "TableModel_GroupFiles.h"
+#include "SampleChart.h"
+#include "BarChart.h"
+#include "PieChart.h"
+#include "ISubject_Models.h"
+#include "IObserver_Charts.h"
 
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
+using namespace QtCharts;
+
+class MainWindow : public QMainWindow {
+
     Q_OBJECT
 
     public:
+
+        enum SampleCharts{ // перечисление стратегий
+            BarChart_,
+            PieChart_
+        };
+
         MainWindow(QWidget *parent = nullptr);
         ~MainWindow();
 
-
     private slots:
+
         // слот реагирующий на выбор дирректории
         void on_treeView_SystemFiles_doubleClicked(const QModelIndex &index);
 
-        void on_comboBox_currentIndexChanged(int index);
+        void on_comboBox_GroupStrat_currentIndexChanged(int index);
 
-private:
+        void on_comboBox_Diagram_currentIndexChanged(int index);
+
+    private:
+
         Ui::MainWindow *ui;
 
         QFileSystemModel *fileSystem; // Указатель на модель обзора файловой системы
         TableModel_GroupFiles *tableModel; // Указатель на модель для правой таблицы
-
+        QChartView *diagrams; // представление диаграммы
+        QChart chart; // диаграмма
+        SampleChart *someChart; // какая-то диаграмма из шаблона
+        SampleChart *barChart; // диаграмма столбик
+        SampleChart *pieChart; // круговая диаграмма
+        IObserver_Charts *observerChart; // объект наблюдателя
+        ISubject_Models *subjectModel; // объект субъекта для наблюдателя
 
 };
 #endif // MAINWINDOW_H

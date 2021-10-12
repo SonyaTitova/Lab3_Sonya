@@ -22,7 +22,7 @@ QVector<QStringList> helper_Strat::getComfyMapping(){ // выдает данны
         row << i.key() << QString::number(i.value()); // добавляем в строку имя содержимого и его размер
         float procent = static_cast<float>(i.value())/(weight/100); // высчитываем процент размера содержимого
 
-        if(procent == 0) row << "< 0.01%"; // если процент равен нулю то пишем "< 0.01%"
+        if(procent < 0.01) row << "< 0.01%"; // если процент равен нулю то пишем "< 0.01%"
         else row << QString::number(procent,'a',2) + "%"; // а иначе формируем запись процента с двумя знаками после запятой
         outputData.append(row); // добавляем строку в выходные данные
         i++;
